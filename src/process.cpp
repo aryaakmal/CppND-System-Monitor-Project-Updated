@@ -47,11 +47,7 @@ long int Process::UpTime() {
   return LinuxParser::UpTime() - LinuxParser::UpTime(pid_); 
 }
 
-// TODO: Overload the "less than" comparison operator for Process objects
-// REMOVE: [[maybe_unused]] once you define the function
-//bool Process::operator<(Process const& a[[maybe_unused]]) const { return true; }
-//bool Process::operator<(Process const& a) const { return stol(Ram()) < stol(a.Ram()); }
-//bool Process::operator<(Process const& a) const { return pid_ < a.pid_; }
-//bool Process::operator<(Process & a) { CpuUtilization()  < a.CpuUtilization(); }
-//bool Process::operator<(Process & a) { pid_  < a.pid_; }
-  bool Process::operator<(Process & a) { cpuUtil_ < a.cpuUtil_;}
+// DONE: Overload the "less than" comparison operator for Process objects
+
+//bool Process::operator<(Process & a) {return CpuUtilization()  < a.CpuUtilization(); }
+bool Process::operator<(Process & a) { return cpuUtil_ < a.cpuUtil_;}
