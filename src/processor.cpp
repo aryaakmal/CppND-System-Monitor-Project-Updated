@@ -1,8 +1,13 @@
 #include "processor.h"
 #include "linux_parser.h"
 
-// TODO: Return the aggregate CPU utilization
+// DONE: Return the aggregate CPU utilization
 float Processor::Utilization() { 
+  
+  long totaltime = LinuxParser::Jiffies();
+  long activetime = LinuxParser::ActiveJiffies();
+  return activetime * (1.f / totaltime);
+/*
   std::vector<std::string> x;
   //std::vector<std::string> xp;
   //xp = LinuxParser::CpuUtilization();
@@ -35,5 +40,6 @@ float Processor::Utilization() {
   //float cpu_perc = (total - idle)/total;
   //return (totald - idled)/totald;
   return nonidle/(idle+nonidle);
+*/
   
 }
